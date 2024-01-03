@@ -1,0 +1,45 @@
+  <table class="min-w-full mt-[60px] bg-white border border-gray-300">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">Image</th>
+          <th class="py-2 px-4 border-b">Product Name</th>
+          <th class="py-2 px-4 border-b">Description</th>
+          <th class="py-2 px-4 border-b">Price</th>
+          <th class="py-2 px-4 border-b">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      <?php
+      $data = mysqli_connect('localhost', 'root', '', 'elctro'); 
+      $get_data = "SELECT * FROM product";
+      $query = mysqli_query($data,$get_data);
+      while($row = mysqli_fetch_assoc($query)){
+        $name = $row['name'];
+        $id = $row['id']
+        ?>
+         <tr>
+          <td class="py-2 px-4 border-b"><img src="product1.jpg" alt="Product 1" class="w-16 h-16 object-cover"></td>
+          <td class="py-2 px-4 border-b"><?=$name?></td>
+          <td class="py-2 px-4 border-b">Product 1 Description</td>
+          <td class="py-2 px-4 border-b">$19.99</td>
+          <td class="py-2 px-4 border-b">
+          
+          <form methode = 'GET'>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md "  name ="update" value = '<?=$id?>'>update</button>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md" name ="see" value = '<?=$id?>'>see</button>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md" name ="not_see" value = '<?=$id?>'>not see</button>
+        
+          </form>
+            
+          
+           
+        </td>
+        </tr>
+        <?php
+
+      }
+      ?>
+        
+      </tbody>
+    </table>

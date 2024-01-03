@@ -1,38 +1,28 @@
 <?php
-session_start();
-
 $data = mysqli_connect('localhost', 'root', '', 'elctro');  
 
 $persone = "SELECT * FROM person";
 $query = mysqli_query($data, $persone);
 
 
-if (isset($_GET['add'])) {
+if (isset($_GET['admine'])) {
    
-    
-    $selctid = $_GET['add'];
-    $get = "SELECT * FROM person WHERE Id LIKE '%$selctid%'";
+
+    $selctid = $_GET['admine'];
+    $get = "SELECT * FROM utilisateur WHERE Id LIKE '%$selctid%'";
     $scondquery = mysqli_query($data, $get);
     while($selected = mysqli_fetch_assoc($scondquery)){
         $name = $selected['name'];  
         $password = $selected['passworde'];
         $id = $selected['Id'];
         $email = $selected['email'];
-        mysqli_query($data, "INSERT INTO utilisateur(passworde,email,name) VALUES ('$password', '$email','$name')");
-        mysqli_query($data, "DELETE FROM person WHERE Id='$id';");
+        mysqli_query($data, "INSERT INTO adime(passworde,email,name) VALUES ('$password', '$email','$name')");
+        mysqli_query($data, "DELETE FROM utilisateur WHERE Id='$id'");
         }
-
-    header('location: '.$_SERVER['PHP_SELF']);
+    header('location: '.$_SERVER['PHP_SELF']); 
 }
 
-if (isset($_GET['delete'])) {
-    $selctid = $_GET['delete'];
 
-    
-        mysqli_query($data, "DELETE FROM person WHERE Id='$selctid'");
-        header('location: '.$_SERVER['PHP_SELF']);
-
-    }
     
 
 
@@ -78,6 +68,7 @@ if (isset($_GET['delete'])) {
         </div>
     </nav>
 </header>
+    
    <div class="relative overflow-x-auto">
     <table class="w-[90%] ml-[100px] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -91,9 +82,7 @@ if (isset($_GET['delete'])) {
                <th scope="col" class="px-6 py-3">
                 add
                 </th>
-                <th scope="col" class="px-6 py-3">
-                dont add
-                </th>
+               
                 
                
             </tr>
@@ -101,7 +90,7 @@ if (isset($_GET['delete'])) {
         <tbody>
         <?php
       $data = mysqli_connect('localhost', 'root', '', 'elctro'); 
-      $get_data = "SELECT * FROM person";
+      $get_data = "SELECT * FROM utilisateur";
       $query = mysqli_query($data,$get_data);
       while($row = mysqli_fetch_assoc($query)){
         $name = $row['name'];  
@@ -121,14 +110,10 @@ if (isset($_GET['delete'])) {
               
                <td class="px-6 py-4">
                 <form methode = 'GET'>
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded-md "  name ="add" value = "<?=$id?>">add</button>
+                  <button class="bg-blue-500 text-white px-4 py-2 rounded-md "  name ="admine" value = "<?=$id?>">admine</button>
                 </form>
                </td>
-               <td class="px-6 py-4">
-                <form methode = 'GET'>
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded-md "  name ="delete" value = "<?=$id?>">delet</button>
-                </form>
-               </td>
+               
             </tr>
             
             <?php
@@ -136,7 +121,7 @@ if (isset($_GET['delete'])) {
             ?>
         </tbody>
     </table>
-    <button type="submit" class="inline-flex ml-[100px] bg-slate-900 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+    <button type="submit"  class="inline-flex ml-[100px] bg-slate-900 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
             <a href="utilisateur.php">utilisateur</a> 
           </button>
 </div>

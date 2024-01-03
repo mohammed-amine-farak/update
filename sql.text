@@ -1,0 +1,54 @@
+CREATE DATABASE ectro;
+CREATE TABLE adime(
+Id	AUTO_INCREMENT
+passworde varchar(225),
+email	varchar(225),
+name	varchar(225),
+lastname varchar(225)
+);
+
+
+CREATE TABLE persone(
+Id	AUTO_INCREMENT
+passworde varchar(225),
+email	varchar(225),
+name	varchar(225),
+lastname varchar(225)
+);
+
+
+CREATE TABLE persone(
+Id	AUTO_INCREMENT
+passworde varchar(225),
+email	varchar(225),
+name	varchar(225),
+lastname varchar(225)
+);
+
+CREATE TABLE utilisateur(
+Id	AUTO_INCREMENT
+passworde varchar(225),
+email	varchar(225),
+name	varchar(225),
+lastname varchar(225)
+);
+CREATE TABLE product(
+    id AUTO_INCREMENT,
+name	varchar(225),
+old_price	int(225),
+new_price	int(225),
+image	varchar(225);
+stock	int(225),
+category	varchar(225);
+status	varchar(225);
+code_a_barres	int(225),
+offre_de_prix	int(225),
+quantite_min int(225)
+)
+CREATE TABLE category(
+    id AUTO_INCREMENT,
+name	varchar(225),
+description varchar(225),
+image	varchar(225)
+
+)
